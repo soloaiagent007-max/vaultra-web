@@ -22,29 +22,52 @@
     });
   }
 
-  // Hero video: sources are attached by JS (data-src) so reduced-motion and no-JS visitors
-  // never download it — they get the poster / static image instead.
-  var video = document.querySelector('.hero-video');
-  if (video && !reduce) {
-    var startVideo = function () {
-      // Safari plays VP9 WebM but ignores alpha; use the navy MP4 there (blended away with screen mode).
-      var ua = navigator.userAgent;
-      var isSafari = /Safari/.test(ua) && !/Chrome|Chromium|CriOS|FxiOS|Edg|Android/.test(ua);
-      video.querySelectorAll('source').forEach(function (s) {
-        if (isSafari && s.type === 'video/webm') { s.remove(); return; }
-        s.src = s.getAttribute('data-src');
-      });
-      video.addEventListener('loadeddata', function () {
-        if (/\.mp4(\?|$)/.test(video.currentSrc)) video.classList.add('is-mp4');
-      });
-      video.preload = 'auto';
-      video.load();
-      var p = video.play && video.play();
-      if (p && p.catch) p.catch(function () {});
+  // Vault videos (hero + About). Sources live in data-src so reduced-motion and no-JS visitors
+  // never download them — they get the poster / static image instead.
+  // Hero streams after page load; About loads only when scrolled into view. Both pause off-screen.
+  var ua = navigator.userAgent;
+  // Safari plays VP9 WebM but ignores alpha; use the navy MP4 there (blended away with screen mode).
+  var isSafari = /Safari/.test(ua) && !/Chrome|Chromium|CriOS|FxiOS|Edg|Android/.test(ua);
+  var videos = [].slice.call(document.querySelectorAll('.vault-video'));
+
+  function loadVideo(v) {
+    if (v.dataset.loaded) return;
+    v.dataset.loaded = '1';
+    v.querySelectorAll('source').forEach(function (s) {
+      if (isSafari && s.type === 'video/webm') { s.remove(); return; }
+      s.src = s.getAttribute('data-src');
+    });
+    v.addEventListener('loadeddata', function () {
+      if (/\.mp4(\?|$)/.test(v.currentSrc)) v.classList.add('is-mp4');
+    });
+    v.preload = 'auto';
+    v.load();
+  }
+  function playVideo(v) {
+    loadVideo(v);
+    var p = v.play && v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  if (videos.length && !reduce) {
+    var pageLoaded = document.readyState === 'complete';
+    var visible = new Map();
+    // Nothing streams until the page has loaded (poster paints first); then a video plays
+    // only while it is on-screen and pauses when it scrolls away.
+    var update = function (v) {
+      if (visible.get(v) && pageLoaded) playVideo(v);
+      else if (!visible.get(v) && v.dataset.loaded) v.pause();
     };
-    // Let the poster, text and fonts paint first; then stream the video.
-    if (document.readyState === 'complete') startVideo();
-    else window.addEventListener('load', startVideo, { once: true });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { visible.set(e.target, e.isIntersecting); update(e.target); });
+      }, { rootMargin: '150px 0px', threshold: 0.01 });
+      videos.forEach(function (v) { io.observe(v); });
+    } else {
+      videos.forEach(function (v) { visible.set(v, true); });
+    }
+    var onLoad = function () { pageLoaded = true; videos.forEach(update); };
+    if (pageLoaded) onLoad(); else window.addEventListener('load', onLoad, { once: true });
   }
 
   // Matrix-style code stream (lightweight canvas, ~20fps, paused when hidden, off for reduced motion)

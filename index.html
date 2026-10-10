@@ -68,14 +68,14 @@
 
       <div class="hero-art">
         <div class="hero-halo" aria-hidden="true"></div>
-        <video class="hero-video" autoplay muted loop playsinline preload="none"
+        <video class="hero-video vault-video" autoplay muted loop playsinline preload="none"
                poster="assets/img/vault-poster.webp" width="720" height="720"
                aria-label="Animated Vaultra vault with a glowing blue V">
           <source data-src="assets/video/vault-anim.webm" type="video/webm" />
           <source data-src="assets/video/vault-anim.mp4" type="video/mp4" />
           <img src="assets/img/vault-poster.webp" alt="Vaultra vault with a glowing blue V" width="720" height="720" />
         </video>
-        <img class="hero-static" src="assets/img/vault-poster.webp" alt="Vaultra vault with a glowing blue V" width="720" height="720" />
+        <img class="hero-static vault-static" src="assets/img/vault-poster.webp" alt="Vaultra vault with a glowing blue V" width="720" height="720" />
         <div class="hero-floor" aria-hidden="true"></div>
       </div>
     </section>
@@ -136,16 +136,28 @@
       <div class="section-inner">
         <p class="section-eyebrow">LEADERBOARD</p>
         <h2>The vault keeps score.</h2>
-        <p class="section-lead">Season rankings go live with launch. For now, the board is sealed — be first in line when the doors open.</p>
-        <div class="lb-panel panel">
-          <div class="panel-bar"><span class="panel-title">Season Board</span><span class="tag">Sealed</span></div>
-          <div class="lb-row lb-head">
-            <span>Rank</span><span>Player</span><span>KeyCards</span>
+        <p class="section-lead">Season rankings and the Vault Word daily board go live with launch. For now, the boards are sealed — be first in line when the doors open.</p>
+        <div class="lb-grid">
+          <div class="lb-panel panel" role="region" aria-label="Season Board">
+            <div class="panel-bar"><span class="panel-title">Season Board</span><span class="tag">Sealed</span></div>
+            <div class="lb-row lb-head"><span>Rank</span><span>Player</span><span>KeyCards</span></div>
+            <div class="lb-row muted"><span>1</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>2</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>3</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>4</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>5</span><span>Coming Soon</span><span>—</span></div>
+            <p class="lb-note">Live season board ships with the first public build.</p>
           </div>
-          <div class="lb-row muted"><span>—</span><span>Coming Soon</span><span>—</span></div>
-          <div class="lb-row muted"><span>—</span><span>Coming Soon</span><span>—</span></div>
-          <div class="lb-row muted"><span>—</span><span>Coming Soon</span><span>—</span></div>
-          <p class="lb-note">Live leaderboard ships with the first public build.</p>
+          <div class="lb-panel panel" role="region" aria-label="Vault Word Board">
+            <div class="panel-bar"><span class="panel-title">Vault Word Board</span><span class="tag">Daily</span></div>
+            <div class="lb-row lb-head"><span>Rank</span><span>Player</span><span>Words solved</span></div>
+            <div class="lb-row muted"><span>1</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>2</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>3</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>4</span><span>Coming Soon</span><span>—</span></div>
+            <div class="lb-row muted"><span>5</span><span>Coming Soon</span><span>—</span></div>
+            <p class="lb-note">Daily puzzle — fewest guesses, then earliest finish.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -165,8 +177,15 @@
           </ul>
           <a class="btn btn-primary" href="#download">GET NOTIFIED — DOWNLOAD</a>
         </div>
-        <figure class="about-art">
-          <img src="assets/img/vault-static.webp" alt="Vaultra vault mark — glowing blue V on a code-etched vault" width="720" height="720" loading="lazy" decoding="async" />
+        <figure class="about-art vault-media">
+          <video class="vault-video about-video" muted loop playsinline preload="none"
+                 poster="assets/img/vault-poster.webp" width="720" height="720"
+                 aria-label="Animated Vaultra vault mark — glowing blue V on a code-etched vault">
+            <source data-src="assets/video/vault-anim.webm" type="video/webm" />
+            <source data-src="assets/video/vault-anim.mp4" type="video/mp4" />
+            <img src="assets/img/vault-poster.webp" alt="Vaultra vault mark — glowing blue V on a code-etched vault" width="720" height="720" loading="lazy" decoding="async" />
+          </video>
+          <img class="vault-static" src="assets/img/vault-poster.webp" alt="Vaultra vault mark — glowing blue V on a code-etched vault" width="720" height="720" loading="lazy" decoding="async" />
         </figure>
       </div>
     </section>
