@@ -1,0 +1,171 @@
+/* Vaultra — subpages: /signup, /signup/thanks, /privacy, /terms */
+:root { --matrix: #3dffb0; --matrix-soft: rgba(61, 255, 176, 0.22); }
+
+/* ---------- Quantum City background ---------- */
+.page-city { background: #03050b; }
+.city-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.city-video {
+  position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
+  object-fit: cover; object-position: 55% 50%;
+  background: #03050b url("/assets/bg/quantum-city-still.jpg") center / cover no-repeat;
+}
+.city-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 5, 11, 0.86) 0%, rgba(3, 5, 11, 0.62) 50%, rgba(3, 5, 11, 0.5) 100%),
+    linear-gradient(180deg, rgba(3, 5, 11, 0.35) 0%, rgba(3, 5, 11, 0.55) 60%, rgba(3, 5, 11, 0.92) 100%);
+}
+.city-scan {
+  position: absolute; inset: 0; opacity: 0.35;
+  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.35) 2px 3px);
+}
+.page-city .site-header, .page-city main, .page-city .site-footer { position: relative; z-index: 1; }
+.page-city .site-footer { background: rgba(3, 5, 11, 0.82); }
+
+/* ---------- Header badge ---------- */
+.beta-badge {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--matrix);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(61, 255, 176, 0.45);
+  border-radius: 4px;
+  background: rgba(3, 20, 16, 0.55);
+  box-shadow: 0 0 16px rgba(61, 255, 176, 0.18);
+  white-space: nowrap;
+}
+.beta-badge .pulse { background: var(--matrix); box-shadow: 0 0 10px var(--matrix); }
+.page-city .brand-word { text-transform: uppercase; }
+
+/* ---------- Signup hero ---------- */
+.su-hero {
+  max-width: var(--max); margin: 0 auto;
+  padding: 2.5rem 1.5rem 3.5rem;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center;
+  min-height: min(700px, calc(100vh - 80px));
+}
+.su-hero h1 { font-size: clamp(1.9rem, 4vw, 3.1rem); font-weight: 800; margin-bottom: 1.2rem; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7); }
+.su-hero .subcopy { color: #c8d8f0; font-size: 1.1rem; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8); max-width: 36rem; }
+
+/* ---------- Glassy Matrix card ---------- */
+.glass-card {
+  position: relative; overflow: hidden;
+  padding: 1.8rem 1.6rem 1.5rem;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(8, 22, 44, 0.62), rgba(3, 12, 18, 0.72));
+  border: 1px solid rgba(111, 211, 255, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(61, 255, 176, 0.12),
+    0 0 34px rgba(47, 140, 255, 0.32),
+    0 0 70px rgba(61, 255, 176, 0.08),
+    inset 0 0 40px rgba(47, 140, 255, 0.10);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+}
+.glass-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(135deg, rgba(61, 255, 176, 0.75), rgba(47, 140, 255, 0.2) 40%, rgba(47, 140, 255, 0.2) 60%, rgba(61, 255, 176, 0.6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.glass-scan {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+  background:
+    repeating-linear-gradient(180deg, rgba(61, 255, 176, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, transparent 0%, rgba(61, 255, 176, 0.08) 50%, transparent 100%);
+  background-size: auto, 100% 220%;
+  animation: scan 6s linear infinite;
+}
+@keyframes scan { from { background-position: 0 0, 0 -120%; } to { background-position: 0 0, 0 120%; } }
+.glass-card > *:not(.glass-scan) { position: relative; }
+.glass-title {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display); font-size: 0.95rem; font-weight: 800; letter-spacing: 0.14em;
+  color: var(--matrix); text-shadow: 0 0 14px rgba(61, 255, 176, 0.45);
+}
+.glass-lead { margin: 0 0 1.3rem; color: var(--text); }
+.glass-fine { margin: 1rem 0 0; font-size: 0.85rem; color: #b5c6e0; }
+
+.su-form { display: flex; flex-direction: column; gap: 0.6rem; }
+.su-form label { font-size: 0.88rem; font-weight: 600; color: var(--cyan); letter-spacing: 0.02em; }
+.su-form input[type="email"] {
+  width: 100%; font: inherit; font-size: 1rem; color: var(--text);
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(111, 211, 255, 0.5);
+  background: rgba(2, 8, 18, 0.75);
+  box-shadow: inset 0 0 14px rgba(47, 140, 255, 0.12);
+  transition: border-color .2s, box-shadow .2s;
+}
+.su-form input[type="email"]::placeholder { color: #6f86a8; }
+.su-form input[type="email"]:focus { outline: none; border-color: var(--matrix); box-shadow: 0 0 0 3px var(--matrix-soft), inset 0 0 14px rgba(47, 140, 255, 0.12); }
+.hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+.su-submit { width: 100%; margin-top: 0.4rem; padding: 0.95rem 1rem; font-size: 0.8rem; line-height: 1.35; text-align: center; cursor: pointer; }
+
+/* ---------- Signup sections ---------- */
+.su-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.su-section h2 { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7); }
+.su-section .card, .su-panel { background: linear-gradient(180deg, rgba(10, 22, 50, 0.78), rgba(5, 10, 24, 0.86)); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.su-icon { font-size: 1.8rem; line-height: 1; margin-bottom: 0.9rem; }
+.su-panel { padding: 2rem 1.8rem; }
+.su-panel .section-lead { margin-bottom: 1.2rem; color: #c3d3ec; }
+.su-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.su-list li { display: flex; gap: 0.75rem; align-items: baseline; padding: 0.4rem 0; color: var(--text); }
+.su-list .dot { transform: rotate(45deg) translateY(-1px); }
+.su-list strong { color: var(--cyan); }
+.su-cta { max-width: 760px; margin: 0 auto; padding: 2.2rem 2rem; }
+.su-cta h2 { font-size: clamp(1.4rem, 2.8vw, 2rem); }
+.su-cta p { color: #c8d8f0; }
+.su-cta-sub { font-weight: 700; color: var(--text) !important; margin-bottom: 0.3rem; }
+
+/* ---------- Thanks ---------- */
+.thanks-main { min-height: calc(100vh - 240px); display: grid; place-items: center; padding: 2rem 1.5rem 4rem; }
+.thanks-card { max-width: 620px; width: 100%; padding: 2.4rem 2rem; }
+.thanks-card h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 1rem; }
+.thanks-card p { color: #c8d8f0; }
+.thanks-card .btn { margin-top: 1.2rem; }
+
+/* ---------- Legal pages ---------- */
+.legal-main { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+.legal-body { padding: 1.8rem 1.8rem 1.4rem; }
+.legal-body h1 { font-size: clamp(1.6rem, 3.6vw, 2.3rem); margin-bottom: 0.3rem; }
+.legal-date { margin: 0 0 1.6rem; color: var(--cyan); font-size: 0.85rem; letter-spacing: 0.06em; }
+.legal-body h2 { font-size: 1rem; letter-spacing: 0.1em; color: var(--blue-bright); margin: 1.8rem 0 0.5rem; }
+.legal-body p, .legal-body li { color: #c3d3ec; }
+.legal-body ul { padding-left: 1.2rem; }
+.legal-body a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.nav-simple { display: flex; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .su-hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 1rem; min-height: 0; text-align: left; }
+}
+@media (max-width: 760px) {
+  .site-header { flex-wrap: nowrap; }
+  .page-city .site-header { gap: 0.6rem; }
+  .page-city .brand { gap: 0.5rem; }
+  .page-city .brand-mark { width: 30px; height: 30px; }
+  .page-city .brand-word { font-size: 0.95rem; letter-spacing: 0.16em; }
+  .beta-badge { font-size: 0.56rem; letter-spacing: 0.08em; padding: 0.4rem 0.55rem; gap: 0.4rem; white-space: normal; line-height: 1.3; text-align: center; min-width: 0; }
+  .su-hero { padding: 0.75rem 1.1rem 2.5rem; }
+  .su-hero h1 { font-size: clamp(1.55rem, 7vw, 2rem); }
+  .su-hero .subcopy { font-size: 1rem; margin-bottom: 0; }
+  .glass-card { padding: 1.4rem 1.15rem 1.2rem; }
+  .su-cta { padding: 1.7rem 1.2rem; }
+  .su-panel { padding: 1.5rem 1.2rem; }
+  .su-section { padding-top: 1.8rem; padding-bottom: 1.8rem; }
+  .city-overlay { background: linear-gradient(180deg, rgba(3, 5, 11, 0.72) 0%, rgba(3, 5, 11, 0.7) 50%, rgba(3, 5, 11, 0.9) 100%); }
+  .nav-simple { display: flex; flex-direction: row; width: auto; order: 0; margin: 0 0 0 auto; border: 0; background: none; gap: 1rem; }
+  .nav-simple a { padding: 0; border: 0; }
+  .legal-main { padding: 0.5rem 1.1rem 3rem; }
+  .legal-body { padding: 1.4rem 1.15rem 1rem; }
+}
+@media (max-width: 380px) {
+  .beta-badge .pulse { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .city-video { display: none; }
+  .city-bg { background: #03050b url("/assets/bg/quantum-city-still.jpg") 55% 50% / cover no-repeat; }
+  .glass-scan { animation: none; }
+}

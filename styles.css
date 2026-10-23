@@ -374,6 +374,27 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.6em; font-family: var(--font-displa
 .footer-meta { margin-left: auto; }
 .brand-footer .brand-word { font-size: 0.95rem; }
 
+.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; font-size: 0.85rem; color: var(--muted); }
+.footer-links a { color: var(--cyan); transition: color .2s, text-shadow .2s; }
+.footer-links a:hover, .footer-links a:focus-visible { color: #fff; text-shadow: 0 0 10px var(--glow); }
+.footer-links span { opacity: 0.45; }
+.footer-note { flex-basis: 100%; }
+.nav .nav-beta { color: #3dffb0; font-weight: 600; }
+.nav .nav-beta:hover, .nav .nav-beta:focus-visible { color: #fff; text-shadow: 0 0 12px rgba(61, 255, 176, 0.6); }
+.beta-link {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #3dffb0;
+  text-shadow: 0 0 12px rgba(61, 255, 176, 0.35);
+  border-bottom: 1px solid rgba(61, 255, 176, 0.4);
+  padding-bottom: 2px;
+}
+.beta-link:hover, .beta-link:focus-visible { color: #fff; border-bottom-color: #fff; }
+
 a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 
 /* ---------- Responsive ---------- */
