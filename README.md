@@ -75,12 +75,12 @@ python3 -m http.server 8080
 
 ## Brand notes
 
-- Look: Matrix / AI blue command deck — deep navy (`#05070F`) with electric blue glow. No gold.
+- Look: Matrix / AI blue command deck — deep navy (`#05070F`) with electric blue glow. No gold, no green (accents are electric blue / cyan only).
 - Hero: animated vault `assets/video/vault-anim.webm` (VP9 with alpha) with `assets/video/vault-anim.mp4` (navy bg, used on Safari, blended with `mix-blend-mode: screen`). Poster/static fallback: `assets/img/vault-poster.webp`. The About section reuses the same video files. `main.js` attaches video sources only after page load and only while each video is on-screen (IntersectionObserver), pauses them off-screen, and skips them entirely under `prefers-reduced-motion`.
 - Code-stream background is a lightweight canvas in `main.js` (~20fps, paused when the tab is hidden, off for reduced motion).
 - Favicons (`assets/favicon-32.png`, `favicon-64.png`, `apple-touch-icon.png`) are cropped from the V mark. Originals live outside this repo in `/workspace/vaultra-look/official/`.
 - Store-safe copy rule: no real-money, cash-out, paycheck, wealth, crypto, wallet, token, airdrop or on-chain wording anywhere on the site.
-- Store buttons are labeled **Coming Soon** until real App Store / Google Play URLs exist.
+- Store buttons are labeled **Coming Soon** until real Google Play / Telegram URLs exist. Platforms: coming soon to Android and Telegram.
 - Do not nest this site inside the Unity `vaultra` repo.
 
 ## Stack
