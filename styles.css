@@ -377,7 +377,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.6em; font-family: var(--font-displa
 .footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; font-size: 0.85rem; color: var(--muted); }
 .footer-links a { color: var(--cyan); transition: color .2s, text-shadow .2s; }
 .footer-links a:hover, .footer-links a:focus-visible { color: #fff; text-shadow: 0 0 10px var(--glow); }
-.footer-links span { opacity: 0.45; }
+.footer-links > span { opacity: 0.45; }
 .footer-note { flex-basis: 100%; }
 .nav .nav-beta { color: var(--cyan); font-weight: 600; }
 .nav .nav-beta:hover, .nav .nav-beta:focus-visible { color: #fff; text-shadow: 0 0 12px rgba(111, 211, 255, 0.7); }
@@ -394,6 +394,13 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.6em; font-family: var(--font-displa
   padding-bottom: 2px;
 }
 .beta-link:hover, .beta-link:focus-visible { color: #fff; border-bottom-color: #fff; }
+
+.x-link { display: inline-flex; align-items: center; gap: 0.4rem; }
+.x-icon { width: 14px; height: 14px; flex-shrink: 0; }
+.nav .nav-x { color: var(--cyan); }
+.nav .nav-x .x-icon { width: 16px; height: 16px; }
+.nav .nav-x .x-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.nav .nav-x:hover, .nav .nav-x:focus-visible { color: #fff; text-shadow: none; filter: drop-shadow(0 0 8px rgba(111, 211, 255, 0.7)); }
 
 a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 
@@ -428,6 +435,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   .nav.open { display: flex; }
   .nav a { padding: 0.85rem 1rem; border-bottom: 1px solid var(--line-soft); }
   .nav a:last-child { border-bottom: 0; }
+  .nav .nav-x { display: flex; gap: 0.55rem; }
+  .nav .nav-x .x-text { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
   .section { padding: 3.5rem 1.1rem; }
   .hero { padding-left: 1.1rem; padding-right: 1.1rem; padding-bottom: 3rem; }
   .hero h1 { font-size: clamp(1.6rem, 7.4vw, 2.2rem); }
