@@ -169,3 +169,9 @@
   .city-bg { background: #03050b url("/assets/bg/quantum-city-still.jpg") 55% 50% / cover no-repeat; }
   .glass-scan { animation: none; }
 }
+
+/* Legal pages keep their two-link nav inline at every width (home collapses to a menu at 1100px) */
+@media (max-width: 1100px) {
+  .nav-simple { display: flex; flex-direction: row; width: auto; order: 0; margin: 0 0 0 auto; border: 0; background: none; gap: 1rem; }
+  .nav-simple a { padding: 0; border: 0; }
+}
