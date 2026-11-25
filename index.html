@@ -42,6 +42,7 @@
       <a href="#how">How It Works</a>
       <a href="#preview">Preview</a>
       <a href="#games">Games</a>
+      <a href="#play">Play</a>
       <a href="#leaderboard">Leaderboard</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -150,6 +151,50 @@
               <img class="game-shot" src="assets/img/vault-word-window-800.webp" alt="Vault Word daily puzzle window with a five-letter grid and on-screen keyboard" width="800" height="450" loading="lazy" decoding="async" />
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-play" id="play">
+      <div class="section-inner play-grid">
+        <div class="play-copy">
+          <p class="section-eyebrow">PLAY NOW</p>
+          <h2>Code Catch: Expert Lvl 100 — 30 Second Challenge</h2>
+          <p class="section-lead">A quick taste of Code Harvest's Expert mode. Catch the falling Codes and KeyCards, dodge the red hazards, and survive 30 seconds at level 100. It's brutal, but there's always a way through.</p>
+          <ul class="play-rules">
+            <li><span class="pr-key">Move</span> Mouse, drag on your phone, or arrow keys / A-D</li>
+            <li><span class="pr-key">Catch</span> Codes +1, gold Codes +2, KeyCards +5</li>
+            <li><span class="pr-key">Dodge</span> Red hazards cost a life. You get 3, plus a bonus life halfway.</li>
+          </ul>
+          <p class="play-tag">JUST FOR FUN · NO LEADERBOARD</p>
+          <p class="play-fine">Scores stay on this device and don't carry over to the Vaultra app.</p>
+        </div>
+        <div class="cc" id="code-catch">
+          <div class="cc-stage">
+            <canvas class="cc-canvas" width="360" height="540" role="img" aria-label="Code Catch game area"></canvas>
+            <div class="cc-overlay" data-screen="start">
+              <p class="cc-kicker">EXPERT · LVL 100</p>
+              <p class="cc-title">CODE CATCH</p>
+              <p class="cc-text">Catch Codes and KeyCards. Dodge the red. 30 seconds. 3 lives.</p>
+              <button class="btn btn-primary cc-btn" type="button" data-action="start">START</button>
+              <p class="cc-tag">JUST FOR FUN · NO LEADERBOARD</p>
+            </div>
+            <div class="cc-overlay" data-screen="pause" hidden>
+              <p class="cc-kicker">PAUSED</p>
+              <button class="btn btn-primary cc-btn" type="button" data-action="resume">RESUME</button>
+            </div>
+            <div class="cc-overlay" data-screen="end" hidden>
+              <p class="cc-kicker" data-out="reason">TIME'S UP</p>
+              <p class="cc-title">SCORE <span data-out="score">0</span></p>
+              <p class="cc-best">BEST <span data-out="best">0</span> <span class="cc-newbest" data-out="newbest" hidden>NEW BEST!</span></p>
+              <div class="cc-actions">
+                <button class="btn btn-primary cc-btn" type="button" data-action="again">PLAY AGAIN</button>
+                <a class="cc-beta" href="/signup/">Join the Beta →</a>
+              </div>
+              <p class="cc-tag">JUST FOR FUN · NO LEADERBOARD</p>
+            </div>
+          </div>
+          <p class="cc-live" aria-live="polite"></p>
         </div>
       </div>
     </section>
@@ -328,5 +373,6 @@
   </footer>
 
   <script src="main.js" defer></script>
+  <script src="assets/js/code-catch.js" defer></script>
 </body>
 </html>

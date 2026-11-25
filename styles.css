@@ -547,6 +547,97 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   .nav .nav-x .x-text { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
 }
 
+/* ---------- Play: Code Catch minigame ---------- */
+.section-play { border-bottom: 1px solid var(--line-soft); }
+.play-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: 3rem; align-items: center; }
+.play-copy h2 { max-width: 34rem; }
+.play-rules { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: 0.6rem; color: var(--muted); }
+.play-rules li { display: flex; gap: 0.75rem; align-items: baseline; }
+.pr-key {
+  flex: 0 0 4.6rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.play-tag, .cc-tag {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #ffbf3c;
+  margin: 0 0 0.4rem;
+}
+.play-fine { color: var(--muted); font-size: 0.85rem; margin: 0; }
+.cc { width: min(100%, max(280px, min(400px, calc((100vh - 140px) * 2 / 3)))); justify-self: center; }
+.cc-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border: 1px solid rgba(111, 211, 255, 0.55);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #03050b;
+  animation: cc-pulse 2.4s ease-in-out infinite;
+}
+@keyframes cc-pulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(47, 140, 255, 0.35), inset 0 0 18px rgba(47, 140, 255, 0.12); }
+  50% { box-shadow: 0 0 34px rgba(79, 179, 255, 0.7), inset 0 0 26px rgba(79, 179, 255, 0.2); }
+}
+.cc-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.cc.is-playing .cc-canvas { cursor: none; }
+.cc-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(3, 5, 11, 0.72);
+  backdrop-filter: blur(2px);
+}
+.cc-overlay[hidden] { display: none; }
+.cc-overlay p { margin: 0; }
+.cc-kicker {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #ffbf3c;
+}
+.cc-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 7vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  text-shadow: 0 0 18px var(--glow);
+}
+.cc-text { color: var(--muted); max-width: 17rem; font-size: 0.95rem; }
+.cc-best { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.14em; color: var(--cyan); }
+.cc-newbest { color: #ffbf3c; margin-left: 0.4rem; }
+.cc-btn { margin-top: 0.5rem; cursor: pointer; }
+.cc-actions { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 0.4rem 0 0.6rem; }
+.cc-beta { color: var(--cyan); font-weight: 600; }
+.cc-beta:hover, .cc-beta:focus-visible { text-shadow: 0 0 12px var(--glow); }
+.cc-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+@media (max-width: 900px) {
+  .play-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -555,4 +646,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   .hero-static, .about-art .vault-static { display: block; }
   .pulse { animation: none; }
   .btn { transition: none; }
+  .cc-stage { animation: none; box-shadow: 0 0 24px rgba(47, 140, 255, 0.5); }
 }
